@@ -1,0 +1,15 @@
+setup.py
+aw_ssg/__init__.py
+aw_ssg/env_loader.py
+aw_ssg/main.py
+aw_ssg/meta_tags_processor.py
+aw_ssg/purge_tailwind.py
+aw_ssg/robots_txt_gen.py
+aw_ssg/sitemap_generator.py
+aw_ssg/upload_output.py
+aw_ssg.egg-info/PKG-INFO
+aw_ssg.egg-info/SOURCES.txt
+aw_ssg.egg-info/dependency_links.txt
+aw_ssg.egg-info/entry_points.txt
+aw_ssg.egg-info/requires.txt
+aw_ssg.egg-info/top_level.txt

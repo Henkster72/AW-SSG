@@ -1,0 +1,375 @@
+:root{
+    --base: #e08947;
+    --baselight: #f5a773;
+    --accent: #472A14;
+    --link: #3267B5;
+    --bg: #111;
+    --error: #E02D00;
+    --greencol: #137313;
+    --default-size: clamp(1.1rem, 1.2vw, 1.2rem);
+    --default-rounding: 5px;
+}
+body, html {
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: var(--default-size);
+    font-family: "Poppins", sans-serif;
+}
+
+.bg-base{
+    background-color: var(--base) !important;
+}
+.bg-light{
+    background-color: var(--baselight) !important;
+}
+.basecol{
+    color: var(--base) !important;
+}
+.greencol{
+    color: var(--greencol) !important;
+}
+
+.blackshadow{
+    text-shadow: rgba(0, 0, 0, 1) 3px 3px 3px;
+}
+.whiteshadow{
+    text-shadow: rgba(255, 255, 255, .8) 3px 3px 3px;
+}
+
+.blackbshadow{
+    box-shadow: rgba(0, 0, 0, 1) 3px 3px 3px;
+}
+
+.graybshadow{
+    box-shadow: rgba(0, 0, 0, .5) 3px 3px 3px;
+}
+.whitebshadow{
+    box-shadow: rgba(255, 255, 255, .8) 3px 3px 3px;
+}
+
+#blurred-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 25;
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.3s ease;
+    pointer-events: none;
+    height: 5rem;
+    background-color: rgba(0, 0, 0, 0); /* Add this line */
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 30;
+    background-color: rgba(0, 0, 0, .5);
+    transition: background-color 0.3s ease;
+}
+
+#main {
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure the mobile menu is hidden by default */
+#nav-menu {
+    display: none;
+    transform: translateX(100%);
+    width: 146px;
+    transition: transform 0.2s ease;
+}
+
+/* Display mobile menu when not hidden */
+#nav-menu:not(.hidden) {
+    display: block;
+    transform: translateX(0);
+}
+
+/* When the hamburger menu is active, display the mobile menu */
+.hamburger-active ~ #nav-menu {
+    display: block !important;
+}
+
+/* Hamburger button active state */
+.hamburger-active .hamburger span {
+    background-color: var(--basecolor) !important;
+}
+
+/* Menu background color transitions */
+.menu-bg-base {
+    background-color: rgba(71, 42, 20, .8) !important;
+}
+.menu-bg-transparent {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.blurimg, blurimgmore {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.blurimg::before, blurimgmore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    z-index: 1;
+    transform: scale(1.05);
+}
+.blurimg::before {
+    filter: blur(4px);
+}
+.blurimgmore::before {
+    filter: blur(10px);
+}
+
+.blurimg > div {
+    position: relative;
+    z-index: 3;
+}
+
+
+section {
+    width: 100%;
+}
+
+.section-content {
+    max-width: 48rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.jumbotron, .bigheader {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    align-items: flex-start;
+}
+.jumbotron {
+    min-height: 48rem !important;
+    padding: 17rem 2rem 7rem;
+}
+/* Logo divs */
+.divlogo, .divlogomenu {
+    display: block;
+    position: absolute;
+}
+.divlogo {
+    height: 100px;
+    width: 100px;
+}
+/* Logo and Title adjustments */
+.divlogomenu {
+    height: 40px;
+    width: 40px;
+}
+
+.fade-in {
+    animation: fadeIn .2s forwards;
+}
+
+.fade-out {
+    animation: fadeOut .4s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+}
+
+.link-underline-back {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(var(--base) , var(--base));
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 0 100%;
+}
+
+.accordion > input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.accordion .content {
+  max-height: 0;
+  overflow: hidden;
+  transition: padding 0.1s ease-out;
+  border-radius: 0 0 5px 5px;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .content {
+  max-height: 1000px;
+  padding: 15px;
+    background: #efefef;
+  border-top: 0;
+}
+.accordion > input[type="checkbox"]:checked ~ .handle label {
+  border-radius: 5px 5px 0 0;
+}
+
+.accordion label {
+  display: block;
+    border-radius: 5px;
+}
+
+.accordion {
+  margin-bottom: 1em;
+}
+
+.accordion .handle {
+  margin: 0;
+  font-size: 1.125em;
+  line-height: 1.2em;
+}
+
+.accordion label {
+  color: #333;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 15px;
+  background: #fafafa;
+  transition: background 0.4s ease;
+}
+
+.accordion label:hover,
+.accordion label:focus {
+  background: #efefef;
+}
+
+.accordion .handle label:before {
+  font-family: 'Pop Icon';
+  content: "\e953";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: .58em;
+  line-height: 1.556em;
+  vertical-align: middle;
+  transition: transform 0.4s ease;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .handle label:before {
+  transform: rotate(90deg);
+}
+
+.accordion p:last-child {
+  margin-bottom: 0;
+}
+
+.card  {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.default_button {
+    background-color: var(--base);
+    color: white;
+    border-radius: var(--default-rounding);
+    padding: .5rem;
+}
+
+
+/* Media query for smaller viewports */
+@media (max-width: 499px) {
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+    #blurred-menu {
+        height:5rem
+    }
+}
+@media (min-width: 768px) {
+    #blurred-menu {
+        height: 3.7rem;
+    }
+}
+
+.recommended-label {
+  position: absolute;
+  background-color: var(--greencol);
+  color: white;
+  padding: 10px;
+  transform: rotate(-25deg);
+  transform-origin: 0 0;
+  display: flex;
+  align-items: center;
+  border-radius: var(--default-size);
+  z-index: 10;
+    font-size: small;
+}
+
+.externallink, .link {
+  color: var(--link);
+}
+
+.externallink:after {
+  font-family: "Pop Icon";
+  content: "\e949";
+  margin-left: .2rem;
+}
+
+.blog{
+    position: relative;
+    z-index: 1;
+    max-width: 60rem;
+}
+
+/*for header-image generation*/
+.flatheader{
+    padding-top: 17rem;
+    padding-bottom: 8rem;
+    height: 48rem;
+}
+.squareheader{
+    padding-top: 17rem;
+    padding-bottom: 8rem;
+}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% set blurmenu = True %}
+{% set sociallinks = True %}
+
+{% block content %}
+    <!-- Jumbotron -->
+    <section class="jumbotron blurimg flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ placeholder.webp }}');">
+        <div class="section-content p-8 rounded-lg text-center text-white max-w-4xl mx-auto relative">
+
+            <h1 class="text-3xl font-extrabold sm:text-5xl gradient-text-shadow" data-entrance="from-bottom">
+                DISCOVER OUR PREMIUM SERVICES
+            </h1>
+            <h1 class="text-2xl font-extrabold sm:text-4xl gradient-text-shadow" data-text="THE COMPLETE PACKAGE FOR YOUR NEXT WEBSITE">THE COMPLETE PACKAGE FOR YOUR NEXT WEBSITE</h1>
+            <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                Unlock the full potential of your online presence with our all-inclusive services. We provide everything you need to create a standout website tailored to your brand.
+            </p>
+            <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                From custom design to seamless functionality, our premium services ensure your website is not only visually stunning but also highly effective.
+            </p>
+            <div class="button-block">
+                <div class="inline-block bg-base text-white font-bold py-4 px-8 rounded-md text-2xl mt-4 shadow-md relative overflow-hidden">
+                    <a href="allroundwebsitequote/" class="cta-button">Get your <span class="word">attractive</span> website here <span class='pi pi-starsfull text-xl pi-up textwhite'></span></a>
+                </div>
+                <div class="inline-block bg-base text-white font-bold py-4 px-8 rounded-md text-2xl mt-4 shadow-md">
+                    <a href="contact/">Contact us<span class="font-normal pi envelopeopen text-xl ml-2"></span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="py-16 px-4 relative z-10 mt-16 items-center starry-background">
+        <div class="p-8 rounded-lg max-w-4xl mx-auto text-center text-white">
+            <h1 class="text-4xl font-bold mb-8 gradient-text-shadow" data-text="Meet Our Team" data-entrance="from-left">Meet Our Team</h1>
+            <div class="flex flex-col md:flex-row justify-around items-center">
+                <div class="mb-8 md:mb-0 text-center">
+                    <img src="{{ henk_profile.webp }}" alt="Henk Profile" class="w-48 h-48 rounded-full mx-auto">
+                    <h2 class="text-2xl font-bold mt-4">Henk</h2>
+                    <p class="text-lg italic mt-2">"Forever curious, always learning."</p>
+                </div>
+                <div class="mb-8 md:mb-0 text-center">
+                    <img src="{{ abbie_profile.webp }}" alt="Abbie Profile" class="w-48 h-48 rounded-full mx-auto">
+                    <h2 class="text-2xl font-bold mt-4">Abbie</h2>
+                    <p class="text-lg italic mt-2">"I want to make everything beautiful."</p>
+                </div>
+            </div>
+            <p class="text-lg mt-8">Discover more about our team and what drives us on our <a href="{{ about.html }}" class="blackshadow"><span class='pi pi-profile mr-2 basecol'></span>About Page</a>.</p>
+        </div>
+    </section>
+
+
+{% endblock %}

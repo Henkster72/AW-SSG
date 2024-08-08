@@ -1,0 +1,7 @@
+setup.py
+aw_ssg.egg-info/PKG-INFO
+aw_ssg.egg-info/SOURCES.txt
+aw_ssg.egg-info/dependency_links.txt
+aw_ssg.egg-info/entry_points.txt
+aw_ssg.egg-info/requires.txt
+aw_ssg.egg-info/top_level.txt

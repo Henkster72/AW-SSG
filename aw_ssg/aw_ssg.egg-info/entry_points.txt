@@ -1,0 +1,3 @@
+[console_scripts]
+aw-ssg-init = aw_ssg.init_project:create_initial_structure
+

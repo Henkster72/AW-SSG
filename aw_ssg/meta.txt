@@ -1,0 +1,12 @@
+name;viewport;width=device-width, initial-scale=1.0
+name;description;{{ meta_description }}
+name;keywords;{{ meta_keywords }}
+name;twitter:card;summary_large_image
+name;twitter:title;{{ title_site }} - {{ subtitle_site }}
+name;twitter:description;{{ meta_description }}
+name;twitter:image;{{ base_url }}static/images/sharing-image.jpg
+name;language;en
+property;og:title;{{ title_site }} - {{ subtitle_site }}
+property;og:description;{{ meta_description }}
+property;og:image;{{ base_url }}static/images/sharing-image.jpg
+property;og:url;{{ base_url }}

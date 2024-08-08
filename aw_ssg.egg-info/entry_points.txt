@@ -1,0 +1,3 @@
+[console_scripts]
+aw-ssg-init = scripts.init_project:main
+

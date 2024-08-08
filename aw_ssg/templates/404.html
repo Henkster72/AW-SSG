@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title_404 }}{% endblock title %}
+{% set AW_anim = True %}
+
+{% set sociallinks = True %}
+{% block content %}
+
+<div class="blog mx-auto py-32 px-12 bg-white relative">
+  <span class="pi pi-forbidden watermark"></span>
+  <h1 class="text-4xl font-serif mb-4 relative">404</h1>
+  <div class="mb-6">
+    <span class="pi pi-magnify text-5xl mr-4 basecol"></span>
+    <p class="text-xl">{{ title_404 }}</p>
+    <br>
+    <p>{{ text_404 }}</p>
+    <br>
+    <p><a href="/" class="link">{{ link_404 }}<span class="pi pi-home link ml-4"></span></a></p>
+  </div>
+</div>
+
+{% endblock %}

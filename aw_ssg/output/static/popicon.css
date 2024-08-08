@@ -1,0 +1,725 @@
+/* Duration utility classes */
+:root {
+  --t-1: 0.1s;
+  --t-2: 0.2s;
+  --t-3: 0.3s;
+  --t-4: 0.4s;
+  --t-5: 0.5s;
+  --t-6: 0.6s;
+  --t-7: 0.7s;
+  --t-8: 0.8s;
+  --t-9: 0.9s;
+  --t-10: 1s;
+  --t-15: 1.5s;
+  --t-20: 2s;
+}
+
+@font-face {
+    font-family: "Pop Icon";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("popicon.woff2") format("woff2");
+}
+
+/* Duration classes */
+.t-1 { --duration: var(--t-1); }
+.t-2 { --duration: var(--t-2); }
+.t-3 { --duration: var(--t-3); }
+.t-4 { --duration: var(--t-4); }
+.t-5 { --duration: var(--t-5); }
+.t-6 { --duration: var(--t-6); }
+.t-7 { --duration: var(--t-7); }
+.t-8 { --duration: var(--t-8); }
+.t-9 { --duration: var(--t-9); }
+.t-10 { --duration: var(--t-10); }
+.t-15 { --duration: var(--t-15); }
+.t-20 { --duration: var(--t-20); }
+
+/* Classes for relative inset of icons*/
+.pi-1 {
+    position: relative;
+    left: -1.6rem;
+    margin-right: -1rem;
+}
+.pi-up {
+    position: relative;
+    inset-block: -.2rem;
+}
+.pi-upper {
+    position: relative;
+    inset-block: -1.5rem;
+}
+.pi-down {
+    position: relative;
+    inset-block: .3rem;
+}
+.pi{
+    font-family: "Pop Icon";
+}
+.packageopen::before {
+  content: "\e951";
+}
+.packageopen:hover::before {
+  content: "\e94f";
+}
+.packageclose::before {
+  content: "\e94f";
+}
+.packageclose:hover::before {
+  content: "\e951";
+}
+.lockopen::before {
+  content: "\e95b";
+}
+.lockopen:hover::before {
+  content: "\e95a";
+}
+.lockclose::before {
+  content: "\e95a";
+}
+.lockclose:hover::before {
+  content: "\e95b";
+}
+.answerquestion::before {
+  content: "\e945";
+}
+.answerquestion:hover::before {
+  content: "\e940";
+}
+.envelopeopen::before {
+  content: "\e929";
+}
+.envelopeopen:hover::before {
+  content: "\e921";
+}
+.envelopeclose::before {
+  content: "\e921";
+}
+.envelopeclose:hover::before {
+  content: "\e929";
+}
+.pi-local:before {
+    content: "\e901"
+}
+.pi-filter:before {
+    content: "\e902"
+}
+.pi-hamburger:before {
+    content: "\e903"
+}
+.pi-leftwardsarrow:before {
+    content: "\e904"
+}
+.pi-rightwardsarrow:before {
+    content: "\e905"
+}
+.pi-upwardsarrow:before {
+    content: "\e906"
+}
+.pi-downwardsarrow:before {
+    content: "\e907"
+}
+.pi-hordots:before {
+    content: "\e908"
+}
+.pi-verdots:before {
+    content: "\e909"
+}
+.pi-code:before {
+    content: "\e90a"
+}
+.pi-descorder:before {
+    content: "\e90b"
+}
+.pi-ascorder:before {
+    content: "\e90c"
+}
+.pi-ideal:before {
+    content: "\e90d"
+}
+.pi-tiktok:before {
+    content: "\e90e"
+}
+.pi-x:before {
+    content: "\e90f"
+}
+.pi-facebook:before {
+    content: "\e910"
+}
+.pi-linkedin:before {
+    content: "\e911"
+}
+.pi-youtube:before {
+    content: "\e912"
+}
+.pi-instagram:before {
+    content: "\e913"
+}
+.pi-tumbler:before {
+    content: "\e914"
+}
+.pi-wordpress:before {
+    content: "\e915"
+}
+.pi-google:before {
+    content: "\e916"
+}
+.pi-pinterest:before {
+    content: "\e917"
+}
+.pi-whatsapp:before {
+    content: "\e918"
+}
+.pi-snapchat:before {
+    content: "\e919"
+}
+.pi-bitcoin:before {
+    content: "\e91a"
+}
+.pi-heart:before {
+    content: "\e91b"
+}
+.pi-star:before {
+    content: "\e91c"
+}
+.pi-profile:before {
+    content: "\e91d"
+}
+.pi-bad:before {
+    content: "\e91e"
+}
+.pi-good:before {
+    content: "\e91f"
+}
+.pi-send:before {
+    content: "\e920"
+}
+.pi-openenvelope:before {
+    content: "\e921"
+}
+.pi-money:before {
+    content: "\e922"
+}
+.pi-angryface:before {
+    content: "\e923"
+}
+.pi-frowningface:before {
+    content: "\e924"
+}
+.pi-grinningface:before {
+    content: "\e925"
+}
+.pi-smilingface:before {
+    content: "\e926"
+}
+.pi-smilingfacehearts:before {
+    content: "\e927"
+}
+.pi-edit:before {
+    content: "\e928"
+}
+.pi-envelope:before {
+    content: "\e929"
+}
+.pi-neutralface:before {
+    content: "\e92a"
+}
+.pi-flag:before {
+    content: "\e92b"
+}
+.pi-cross:before {
+    content: "\e92c"
+}
+.pi-deepl:before {
+    content: "\e92d"
+}
+.pi-graph:before {
+    content: "\e92e"
+}
+.pi-home:before {
+    content: "\e92f"
+}
+.pi-magnify:before {
+    content: "\e930"
+}
+.pi-checkmark:before {
+    content: "\e931"
+}
+.pi-speaker:before {
+    content: "\e932"
+}
+.pi-list:before {
+    content: "\e933"
+}
+.pi-floppydisk:before {
+    content: "\e934"
+}
+.pi-share:before {
+    content: "\e935"
+}
+.pi-settings:before {
+    content: "\e936"
+}
+.pi-phone:before {
+    content: "\e937"
+}
+.pi-thumbsup:before {
+    content: "\e938"
+}
+.pi-bookmark:before {
+    content: "\e939"
+}
+.pi-copy:before {
+    content: "\e93a"
+}
+.pi-clock:before {
+    content: "\e93b"
+}
+.pi-bell:before {
+    content: "\e93c"
+}
+.pi-image:before {
+    content: "\e93d"
+}
+.pi-contact:before {
+    content: "\e93e"
+}
+.pi-globe:before {
+    content: "\e93f"
+}
+.pi-info:before {
+    content: "\e940"
+}
+.pi-calendar:before {
+    content: "\e941"
+}
+.pi-camera:before {
+    content: "\e942"
+}
+.pi-bin:before {
+    content: "\e943"
+}
+.pi-clipboard:before {
+    content: "\e944"
+}
+.pi-question:before {
+    content: "\e945"
+}
+.pi-folder:before {
+    content: "\e946"
+}
+.pi-hospital:before {
+    content: "\e947"
+}
+.pi-quote:before {
+    content: "\e948"
+}
+.pi-externallink:before {
+    content: "\e949"
+}
+.pi-brush:before {
+    content: "\e94a"
+}
+.pi-cloud:before {
+    content: "\e94b"
+}
+.pi-certificate:before {
+    content: "\e94c"
+}
+.pi-checkedcertificate:before {
+    content: "\e94d"
+}
+.pi-ribboncertificate:before {
+    content: "\e94e"
+}
+.pi-openpackage:before {
+    content: "\e94f"
+}
+.pi-deliverpackage:before {
+    content: "\e950"
+}
+.pi-package:before {
+    content: "\e951"
+}
+.pi-leftcaret:before {
+    content: "\e952"
+}
+.pi-rightcaret:before {
+    content: "\e953"
+}
+.pi-upcaret:before {
+    content: "\e954"
+}
+.pi-downcaret:before {
+    content: "\e955"
+}
+.pi-chatgpt:before {
+    content: "\e956"
+}
+.pi-servicehands:before {
+    content: "\e957"
+}
+.pi-eye:before {
+    content: "\e958"
+}
+.pi-horn:before {
+    content: "\e959"
+}
+.pi-lock:before {
+    content: "\e95a"
+}
+.pi-unlock:before {
+    content: "\e95b"
+}
+.pi-trophy:before {
+    content: "\e95c"
+}
+.pi-book:before {
+    content: "\e95d"
+}
+.pi-map:before {
+    content: "\e95e"
+}
+.pi-bubble:before {
+    content: "\e95f"
+}
+.pi-download:before {
+    content: "\e960"
+}
+.pi-gear:before {
+    content: "\e961"
+}
+.pi-wikipedia:before {
+    content: "\e962"
+}
+.pi-reddit:before {
+    content: "\e963"
+}
+.pi-linkchain:before {
+    content: "\e964"
+}
+.pi-forbidden:before {
+    content: "\e965"
+}
+.pi-moon:before {
+    content: "\e966"
+}
+.pi-sun:before {
+    content: "\e967"
+}
+.pi-lightbulb:before {
+    content: "\e968"
+}
+.pi-pin:before {
+    content: "\e969"
+}
+.pi-openfolder:before {
+    content: "\e96a"
+}
+.pi-openbook:before {
+    content: "\e96b"
+}
+.pi-wifi:before {
+    content: "\e96c"
+}
+.pi-circle:before {
+    content: "\e96d"
+}
+.pi-circlefull:before {
+    content: "\e96e"
+}
+.pi-heartfull:before {
+    content: "\e96f"
+}
+.pi-starfull:before {
+    content: "\e970"
+}
+.pi-starsfull:before {
+    content: "\e971"
+}
+.pi-arrowbow:before {
+    content: "\e972"
+}
+.pi-circlelock:before {
+    content: "\e973"
+}
+.pi-gift:before {
+    content: "\e974"
+}
+.pi-smartphone:before {
+    content: "\e975"
+}
+.pi-tablet:before {
+    content: "\e976"
+}
+.pi-laptop:before {
+    content: "\e977"
+}
+.pi-desktop:before {
+    content: "\e978"
+}
+.pi-tag:before {
+    content: "\e979"
+}
+.pi-cookie:before {
+    content: "\e97a"
+}
+.pi-widget:before {
+    content: "\e97b"
+}
+.pi-2people:before {
+    content: "\e97c"
+}
+.pi-handshake:before {
+    content: "\e97d"
+}
+.pi-online:before {
+    content: "\e97e"
+}
+.pi-connected:before {
+    content: "\e97f"
+}
+.pi-class:before {
+    content: "\e980"
+}
+.pi-profilecheck:before {
+    content: "\e981"
+}
+
+/*Hover Animations*/
+.hov-wiggle:hover {
+  display: inline-block;
+  animation: wiggle var(--duration) infinite;
+}
+
+.hov-bounce:hover {
+  display: inline-block;
+  animation: bounce var(--duration) infinite;
+}
+
+.hov-rotate:hover {
+  display: inline-block;
+  animation: rotate var(--duration) infinite linear;
+}
+
+.hov-heartbeat:hover  {
+  animation: heartbeat var(--duration) infinite;
+}
+
+.hov-goright:hover {
+  animation: goright var(--duration) linear infinite;
+}
+
+.hov-goleft:hover {
+  animation: goleft var(--duration) linear infinite;
+}
+
+.hov-godown:hover {
+  animation: godown var(--duration) linear infinite;
+}
+
+.hov-goup:hover {
+  animation: goup var(--duration) linear infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: rotate(30deg);
+  }
+  20%, 40%, 60%, 80% {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes goright {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(100% + 1rem));
+  }
+  50.01% {
+    transform: translateX(calc(-100% - 1rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes goleft {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-100% - 1rem));
+  }
+  50.01% {
+    transform: translateX(calc(100% + 1rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes godown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(100% + 1rem));
+  }
+  50.01% {
+    transform: translateY(calc(-100% - 1rem));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes goup {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(-100% - 1rem));
+  }
+  50.01% {
+    transform: translateY(calc(100% + 1rem));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*Replace icon animations*/
+/*Usage for example:
+   <div class="hov-replace-pi">
+    <i class="back-icon pi pi-circle"></i>
+    <i class="front-icon pi pi-good slide-to-right t-3" style="color: #28a745;"></i>
+  </div>*/
+.hov-replace-pi {
+  position: relative;
+  display: inline-block;
+}
+
+.back-icon {
+  color: #000;
+}
+
+.front-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hov-replace-pi:hover .front-icon {
+  opacity: 1;
+}
+
+.hov-replace-pi:hover .front-icon.slide-to-right {
+  animation: slideToRight var(--duration) forwards;
+}
+
+.hov-replace-pi:hover .front-icon.slide-to-left {
+  animation: slideToLeft var(--duration) forwards;
+}
+
+.hov-replace-pi:hover .front-icon.slide-up {
+  animation: slideUp var(--duration) forwards;
+}
+
+.hov-replace-pi:hover .front-icon.slide-down {
+  animation: slideDown var(--duration) forwards;
+}
+
+.hov-replace-pi:hover .front-icon.radial-out {
+  animation: radialOut var(--duration) forwards;
+}
+
+.hov-replace-pi:hover .front-icon.radial-in {
+  animation: radialIn var(--duration) forwards;
+}
+
+@keyframes slideToRight {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes radialOut {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(61% at 50% 50%);
+  }
+}
+
+@keyframes radialIn {
+  0% {
+    clip-path: circle(50% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+  }
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        {% if development_mode %}
+            <meta http-equiv="Content-Security-Policy" content="
+              default-src 'self' data: https://tidycal.com https://lh3.googleusercontent.com https://connect.facebook.net https://www.gstatic.com https://www.google.com https://cdn.ampproject.org;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tidycal.com https://cdn.shapo.io https://www.googletagmanager.com https://connect.facebook.net https://www.gstatic.com https://www.google.com https://cdn.ampproject.org;
+              style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.gstatic.com https://cdn.ampproject.org;
+              font-src 'self' https://fonts.gstatic.com https://www.gstatic.com;
+              frame-src 'self' https://tidycal.com https://app.shapo.io https://www.google.com;
+              connect-src 'self' https://tidycal.com https://cdn.shapo.io https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://cdn.ampproject.org;
+              img-src 'self' data: https://lh3.googleusercontent.com https://www.gstatic.com https://www.google.com;
+            ">
+            <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+            <link rel="stylesheet" type="text/css" href="{{ tailwind.css }}">
+        {% else %}
+            <script defer>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const consent = localStorage.getItem("consentGranted");
+                    const googleTagId = "{{ googletagid }}";
+                    const cookieimg = "{{ cookies.png }}";
+                    const developmentMode = false;
+
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('consent', 'default', {
+                        'ad_user_data': 'denied',
+                        'ad_personalization': 'denied',
+                        'ad_storage': 'denied',
+                        'analytics_storage': 'denied',
+                        'wait_for_update': 500,
+                    });
+                    gtag('js', new Date());
+
+                    if (!consent || developmentMode) {
+                        const consentBanner = document.createElement('div');
+                        consentBanner.innerHTML = `
+                        <div id="consent-banner" class="fixed bottom-4 right-4 ml-4 bg-black border border-gray-300 shadow-lg p-4 rounded-lg z-50 flex items-center space-x-4">
+                            <img src="${cookieimg}" alt="Cookies" class="w-8 h-8">
+                            <div class="text-white">{{ cookie_text }}</div>
+                            <a href="#" id="readMore" class="basecol hover:underline">Read more</a>
+                            <button id="grantConsent" class="bg-base hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">OK</button>
+                        </div>
+                        `;
+                        document.body.appendChild(consentBanner);
+
+                        document.getElementById('grantConsent').addEventListener('click', function() {
+                            localStorage.setItem("consentGranted", "true");
+                            updateConsent('granted');
+                        });
+
+                        document.getElementById('readMore').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('{{ cookie_alert }}');
+                        });
+                    } else {
+                        updateConsent(consent === "true" ? 'granted' : 'denied');
+                    }
+
+                    function updateConsent(status) {
+                        gtag('consent', 'update', {
+                            'ad_user_data': status,
+                            'ad_personalization': status,
+                            'ad_storage': status,
+                            'analytics_storage': status
+                        });
+
+                        if (status === 'granted') {
+                            var gtagScript = document.createElement('script');
+                            gtagScript.async = true;
+                            gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${googleTagId}`;
+                            var firstScript = document.getElementsByTagName('script')[0];
+                            firstScript.parentNode.insertBefore(gtagScript, firstScript);
+                        }
+
+                        const banner = document.getElementById('consent-banner');
+                        if (banner) banner.remove();
+                    }
+                });
+            </script>
+            <meta http-equiv="Content-Security-Policy" content="
+              default-src 'self' {{ ftp_user }} https://tidycal.com https://lh3.googleusercontent.com https://connect.facebook.net https://www.gstatic.com https://www.google.com https://cdn.ampproject.org;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tidycal.com https://cdn.shapo.io https://www.googletagmanager.com https://connect.facebook.net https://www.gstatic.com https://www.google.com https://cdn.ampproject.org;
+              style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.gstatic.com https://cdn.ampproject.org;
+              font-src 'self' https://fonts.gstatic.com https://www.gstatic.com;
+              frame-src 'self' https://tidycal.com https://app.shapo.io https://www.google.com;
+              connect-src 'self' https://tidycal.com https://cdn.shapo.io https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://cdn.ampproject.org;
+              img-src 'self' data: https://lh3.googleusercontent.com https://www.gstatic.com https://www.google.com;
+          ">
+          <link rel="stylesheet" type="text/css" href="{{ tailwind_min.css }}">
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="{{ header_description }}">
+        <meta name="keywords" content="{{ title_site }}{{ header_keywords }}">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="{{ title_site }} - {{ subtitle_site }}">
+        <meta property="og:description" content="{{ title_site }} {{ header_description }}">
+        <meta property="og:image" content="{{ base_url }}{{ sharing-image.jpg }}">
+        <meta property="og:url" content="{{ base_url }}">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ title_site }} - {{ subtitle_site }}">
+        <meta name="twitter:description" content="{{ header_description }}">
+        <meta name="twitter:image" content="{{ base_url }}{{ sharing-image.jpg }}">
+        <meta name="language" content="en">
+        <meta http-equiv="Cache-Control" content="public, max-age=604800, stale-while-revalidate=59">
+        <link rel="stylesheet" type="text/css" href="{{ popicon.css }}">
+        <link rel="stylesheet" type="text/css" href="{{ style.css }}">
+        <script defer src="{{ base.js }}"></script>
+        <link rel="shortcut icon" href="{{ favicon.png }}">
+        <link rel="apple-touch-icon" href="{{ apple_touch_icon.png }}">
+        {% if index %}
+        <title>{{ title_site }} - {{ subtitle_site }}</title>
+        {% else %}
+        <title>{{ title_site }} - {% block title %}{% endblock title %}</title>
+        {% endif %}
+    </head>
+
+    {% if blog %}
+    <body style="background-color: white !important;">
+    {% else %}
+    <body>
+    {% endif %}
+    {% if blurmenu %}
+        <div id="blurred-menu" class="fixed inset-0 pointer-events-none"></div>
+        <script>
+            const menu = document.getElementById('menu');
+            const blurBackdrop = document.getElementById('blurred-menu');
+            const menuHeight = menu.offsetHeight;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > menuHeight) {
+                    blurBackdrop.style.backdropFilter = 'blur(5px)';
+                    blurBackdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'; // Add slight darkening
+                } else {
+                    blurBackdrop.style.backdropFilter = 'blur(0px)';
+                    blurBackdrop.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+                }
+                    });
+        </script>
+    {% endif %}
+    <div class="main-container">
+        <!-- Main Content -->
+        <div id="main">
+            {% block content %}{% endblock %}
+        </div>
+        <!-- Footer Section -->
+        <div class="footer py-4 flex justify-center space-x-4 lg:space-x-8 px-4 z-20 bg-fixed bg-center bg-cover bg-no-repeat text-black" style="background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(224, 137, 71, 0.5)), url('{{ fingers.webp }}');">
+            {% if sociallinks %}
+                {% if mail_address %}
+                <a href="mailto:{{ mail_address }}" class="text-black hover:text-white">
+                    <span class="pi pi-envelope text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if facebook_handle %}
+                <a href="https://www.facebook.com/{{ facebook_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-facebook text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if instagram_handle %}
+                <a href="https://instagram.com/{{ instagram_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-instagram text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if yt_handle %}
+                <a href="https://youtube.com/@{{ yt_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-youtube text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if maps_shortcut %}
+                <a href="https://maps.app.goo.gl/{{ maps_shortcut }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-local text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if pinterest_handle %}
+                <a href="https://pinterest.com/{{ pinterest_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-pinterest text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if x_handle %}
+                <a href="https://x.com/{{ x_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-x text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if snapchat_handle %}
+                <a href="https://snapchat.com/add/{{ snapchat_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-snapchat text-4xl"></span>
+                </a>
+                {% endif %}
+                {% if tiktok_handle %}
+                <a href="https://tiktok.com/@{{ tiktok_handle }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-tiktok text-4xl"></span>
+                </a>
+                {% endif %}
+                <a href="{{ privacypolicy.html }}" class="text-black hover:text-white" target="_blank">
+                    <span class="pi pi-circlelock text-4xl"></span>
+                </a>
+                {% if sendfox_handle %}
+                    <div class="flex items-center space-x-2">
+
+                    <a href="https://sendfox.com/{{ sendfox_handle }}" class="text-black hover:text-white" target="_blank">
+                        <span class="pi pi-openenvelope text-4xl"></span>
+                    </a>
+                    <span class="hidden lg:inline text-sm text-white"><- Subscribe to newsletter</span>
+                    </div>
+                {% endif %}
+
+            {% else %}
+                © {{ title_site }}, 2024
+            {% endif %}
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .input-padding {
+            padding: 12px 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div id="formContainer" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Get in touch</h2>
+        <form action="/send-email.php" method="POST" id="emailForm">
+            <div class="mb-4">
+                <label for="from-email" class="block text-sm font-medium text-gray-700">E-mail</label>
+                <input type="email" id="from-email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-padding" required>
+            </div>
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-padding" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-padding" required></textarea>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Send Email<span class="pi pi-send ml-2"></span></button>
+            </div>
+        </form>
+    </div>
+
+    <div id="thankYouMessage" class="hidden bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Thank You!</h2>
+        <p class="mb-4">Your message has been sent successfully.</p>
+        <button onclick="goBack()" class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Go Back</button>
+    </div>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+
+            var formData = new FormData(form);
+            var name = formData.get('name');
+            formData.set('subject', name); // Set the subject as the name
+
+            // Log formData to verify its contents
+            for (var pair of formData.entries()) {
+                console.log(pair[0]+ ': ' + pair[1]);
+            }
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('formContainer').remove(); // Remove the form container
+                    document.getElementById('thankYouMessage').classList.remove('hidden');
+                } else {
+                    alert('An error occurred: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred: ' + error.message);
+            });
+        });
+
+        function goBack() {
+            document.getElementById('thankYouMessage').classList.add('hidden');
+            location.reload(); // Reload the page to show the form again
+        }
+    </script>
+</body>
+</html>
