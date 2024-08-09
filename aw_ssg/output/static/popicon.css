@@ -486,6 +486,12 @@
 .pi-profilecheck:before {
     content: "\e981"
 }
+.pi-professional:before {
+    content: "\e982"
+}
+.pi-dashboard:before {
+    content: "\e983"
+}
 
 /*Hover Animations*/
 .hov-wiggle:hover {
