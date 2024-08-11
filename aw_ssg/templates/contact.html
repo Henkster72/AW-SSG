@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock title %}
+{% set mailform = True %}
+{% set active_page = 'contact' %}
+{% block content %}
+
+<!-- Contact Section -->
+
+    <section class="jumbotron blurimg flex items-center justify-center bg-cover bg-center nicegradient" style="background-image: url('{{ stylish.avif }}');">
+        <div class="p-8 rounded-lg text-center text-white max-w-4xl mx-auto relative">
+            <div class="text-circle">
+                <span class='pi pi-envelope circle-pack basecol'><span class='pi pi-starsfull circle-packstars text-white'></span></span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+                    <path d="M 250, 250m -250, 0a 250,250 0 0,1 500,0a 250,250 0 0,1 -500,0" fill="none" id="textcircle-format"></path>
+                    <text dy="43" textLength="300%">
+                        <textPath xlink:href="#textcircle-format" textLength="300%">Allround website, high speed, no fluff</textPath>
+                    </text>
+                </svg>
+            </div>
+                <h1 class="text-3xl font-extrabold sm:text-5xl gradient-text-shadow" data-text="CONTACT">
+                    CONTACT
+                </h1>
+                <div class="py-8"></div>
+                <div class="flex flex-col space-y-4 w-full">
+                    {% if mail_address %}
+                    <a href="mailto:{{ mail_address }}" class="bg-red-500 hover:bg-red-700 text-white py-4 px-8 rounded-full flex items-center justify-center">
+                        <span class="pi pi-envelope text-3xl mr-2"></span>{{ mail_address }}
+                    </a>
+                    {% endif %}
+
+                    {% if facebook_handle %}
+                    <a href="https://www.facebook.com/{{ facebook_handle }}" class="bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-facebook text-3xl mr-2"></span>Follow {{ facebook_handle }} on Facebook
+                    </a>
+                    {% endif %}
+
+                    {% if instagram_handle %}
+                    <a href="https://instagram.com/{{ instagram_handle }}" class="bg-pink-500 hover:bg-pink-700 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-instagram text-3xl mr-2"></span>Follow {{ instagram_handle }} on Instagram
+                    </a>
+                    {% endif %}
+
+                    {% if yt_handle %}
+                    <a href="https://youtube.com/@{{ yt_handle }}" class="bg-red-600 hover:bg-red-800 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-youtube text-3xl mr-2"></span>Look at YouTube Channel {{ yt_handle }}
+                    </a>
+                    {% endif %}
+
+                    {% if sendfox_handle %}
+                    <a href="https://sendfox.com/{{ sendfox_handle }}" class="bg-red-400 hover:bg-red-700 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-openenvelope text-3xl mr-2"></span>Subscribe to our Newsletter
+                    </a>
+                    {% endif %}
+
+                    {% if tel_no %}
+                    <a href="https://wa.me/{{ tel_no }}?text={{ wa_text }}" class="bg-green-400 hover:bg-green-600 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-whatsapp text-3xl mr-2"></span>Chat with us on WhatsApp
+                    </a>
+                    {% endif %}
+
+                    {% if maps_shortcut %}
+                    <a href="https://maps.app.goo.gl/{{ maps_shortcut }}" class="bg-yellow-400 hover:bg-yellow-700 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-local text-3xl mr-2"></span>Find us on Google Maps
+                    </a>
+                    {% endif %}
+
+                    {% if pinterest_handle %}
+                    <a href="https://pinterest.com/{{ pinterest_handle }}" class="bg-red-600 hover:bg-red-800 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-pinterest text-3xl mr-2"></span>Follow {{ pinterest_handle }} on Pinterest
+                    </a>
+                    {% endif %}
+
+                    {% if x_handle %}
+                    <a href="https://x.com/{{ x_handle }}" class="bg-blue-600 hover:bg-blue-800 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-x text-3xl mr-2"></span>Follow {{ x_handle }} on X
+                    </a>
+                    {% endif %}
+
+                    {% if snapchat_handle %}
+                    <a href="https://snapchat.com/add/{{ snapchat_handle }}" class="bg-yellow-400 hover:bg-yellow-600 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-snapchat text-3xl mr-2"></span>Follow {{ snapchat_handle }} on Snapchat
+                    </a>
+                    {% endif %}
+
+                    {% if tiktok_handle %}
+                    <a href="https://tiktok.com/@{{ tiktok_handle }}" class="bg-black hover:bg-gray-800 text-white py-4 px-8 rounded-full flex items-center justify-center" target="_blank">
+                        <span class="pi pi-tiktok text-3xl mr-2"></span>Follow {{ tiktok_handle }} on TikTok
+                    </a>
+                    {% endif %}
+                </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

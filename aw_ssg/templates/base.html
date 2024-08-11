@@ -148,6 +148,60 @@
         <div id="main">
             {% block content %}{% endblock %}
         </div>
+            {% if mailform %}
+            <!-- Mail Form -->
+                <div class="flex items-center justify-center py-16">
+                    <div class="section-content bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+                        <h2 id="mailform-title" class="text-2xl font-bold mb-6 text-orange-500 basecol">Get in touch</h2>
+                        <form action="/send-email.php" method="POST" id="emailForm">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-orange-500 basecol">Name</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full border border-orange-500 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm input-padding p-2 bg-black text-white" required="">
+                            </div>
+                            <div class="mb-4">
+                                <label for="from-email" class="block text-sm font-medium text-orange-500 basecol">E-mail</label>
+                                <input type="email" id="from-email" name="from-email" class="mt-1 block w-full border border-orange-500 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm input-padding p-2 bg-black text-white" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-sm font-medium text-orange-500 basecol">Message</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-orange-500 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm input-padding p-2 bg-black text-white" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-base text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Send e-mail<span class="pi pi-send ml-2"></span></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <script>
+                        document.getElementById('emailForm').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            var form = event.target;
+
+                            var formData = new FormData(form);
+                            var name = formData.get('name');
+                            formData.set('subject', name);
+
+                            fetch(form.action, {
+                                method: form.method,
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    window.location.href = '/thankyou/index.html?text=Your%20message%20has%20been%20sent%20successfully%21';
+                                } else {
+                                    alert('An error occurred: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                alert('An error occurred: ' + error.message);
+                            });
+                        });
+                    </script>
+                </div>
+            </section>
+            {% endif %}
+
         <!-- Footer Section -->
         <div class="footer py-4 flex justify-center space-x-4 lg:space-x-8 px-4 z-20 bg-fixed bg-center bg-cover bg-no-repeat text-black" style="background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(224, 137, 71, 0.5)), url('{{ fingers.webp }}');">
             {% if sociallinks %}
