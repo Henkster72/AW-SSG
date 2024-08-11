@@ -32,29 +32,36 @@ It has baked in support for Tailwind, FTP upload, Templating, Syncing (timestamp
 - [Contributing](#contributing)
 - [License](#license)
 
+
 ## Installation
 
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/YourUsername/AW-SSG.git
+    git clone https://github.com/Henkster72/AW-SSG.git
     cd AW-SSG
     ```
-
-2. **Install Python Dependencies**
-
-    Make sure you have Python 3.8+ installed, then install the required Python packages:
+    
+2. **Install dependencies**
+   
+  Ensure you have Python 3.8+ installed, then install the required Python packages:
 
     ```bash
     pip install -r requirements.txt
     ```
 
 3. **Install Node.js and Tailwind CSS**
-
-    Install Node.js dependencies to enable Tailwind CSS purging:
+Install Node.js dependencies to enable Tailwind CSS purging:
 
     ```bash
     npm install
+    ```
+
+4. **IDE Plugin Support: Install AW-SSG as a Package (Optional)**
+To set up AW-SSG as a package in your IDE for improved development support, use the provided "setup.py":
+    
+   ```bash
+    python setup.py
     ```
 
 ## Usage
