@@ -1,6 +1,11 @@
 import os
 import datetime
 
+
+def get_creation_date(path):
+    return datetime.datetime.fromtimestamp(os.path.getctime(path)).strftime('%Y-%m-%d')
+
+
 def generate_sitemap(baseurl):
     sitemap_entries = []
     priority_map = {
@@ -23,8 +28,17 @@ def generate_sitemap(baseurl):
                 url = f"{baseurl}{path.replace(os.path.sep, '/')}"
                 priority = priority_map.get(path.replace(os.path.sep, '/'), priority_map['default'])
                 changefreq = changefreq_map.get(path.replace(os.path.sep, '/'), changefreq_map['default'])
-                lastmod = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.join(root, file))).strftime('%Y-%m-%d')
-                sitemap_entries.append(f"<url><loc>{url}</loc><priority>{priority}</priority><changefreq>{changefreq}</changefreq><lastmod>{lastmod}</lastmod></url>")
+                full_path = os.path.join(root, file)
+
+                if 'blog' in root:
+                    lastmod = get_creation_date(full_path)
+                else:
+                    lastmod = datetime.datetime.fromtimestamp(os.path.getmtime(full_path)).strftime('%Y-%m-%d')
+
+                sitemap_entries.append(
+                    f"<url><loc>{url}</loc><priority>{priority}</priority>"
+                    f"<changefreq>{changefreq}</changefreq><lastmod>{lastmod}</lastmod></url>"
+                )
 
     sitemap_content = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -36,6 +50,8 @@ def generate_sitemap(baseurl):
         f.write(sitemap_content)
     print("Sitemap generated at 'output/sitemap.xml'")
 
+
 if __name__ == "__main__":
     from env_loader import crucial_vars
+
     generate_sitemap(crucial_vars['base_url'])
