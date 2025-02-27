@@ -159,11 +159,22 @@ Configure AW-SSG via the `.env` file. Key variables include:
 
 ## Preprocessor Shortcuts
 
-AW-SSG automates common file path resolutions according to their extensions:
+AW-SSG streamlines your template code by automating common file path resolutions based on file extensions. This opinionated—but highly flexible—structure means you only need to reference your assets by name, while AW-SSG figures out the correct path for you. For example:
 
-- **Image Paths**: `{{ picture.avif }}` → `static/images/picture.avif` (and so every other image format)
-- **HTML Paths**: `{{ blog.html }}` → `blog/index.html`
-- **CSS/JS Paths**: `{{ style.css }}` → `static/style.css` (and JS).
+- **Image Paths**:  
+  Writing `{{ picture.avif }}` automatically resolves to `static/images/picture.avif` (and similarly for other image formats).  
+- **HTML Paths**:  
+  Using `{{ blog.html }}` will link to `blog/index.html`, ensuring your HTML files are consistently organized.  
+- **CSS/JS Paths**:  
+  Referencing `{{ style.css }}` or `{{ app.js }}` automatically points to `static/style.css` and `static/app.js` respectively.
+
+This system expects that assets are placed in their designated folders (e.g., all images under `static/images`), which standardizes file organization and keeps your templates clean.
+
+**Example with Subdirectories:**
+
+Suppose you have a template located in a subdirectory (e.g., `templates/blog/`) and you reference an asset like `{{ logo.png }}`. Based on AW-SSG’s render logic and the provided depth parameter, the asset path might automatically be resolved to something like `../static/images/logo.png`—adjusting the relative path according to the template’s location.
+
+By leveraging these preprocessor shortcuts, AW-SSG makes it effortless to maintain consistent paths across your site, letting you focus on building great content rather than managing asset directories. The sky is the limit—customize and extend these conventions to suit your project’s unique needs!
 
 ---
 
